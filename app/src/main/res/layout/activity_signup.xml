@@ -1,0 +1,218 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
+        android:id="@+id/vscroll2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+        <LinearLayout
+            android:id="@+id/linear5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:padding="8dp"
+                android:text="SIGN UP"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#42A5F5" />
+            <TextView
+                android:id="@+id/textview7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="First Name"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <EditText
+                android:id="@+id/edittext2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:hint="Enter first name"
+                android:textColorHint="#607D8B" />
+            <TextView
+                android:id="@+id/textview8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Last Name"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <EditText
+                android:id="@+id/edittext3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:hint="Enter last name"
+                android:textColorHint="#607D8B" />
+            <TextView
+                android:id="@+id/textview14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Date of Birth "
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <LinearLayout
+                android:id="@+id/linear7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/edittext9"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:inputType="date"
+                    android:textSize="14sp"
+                    android:hint="Select Date"
+                    android:textColor="#000000"
+                    android:textColorHint="#607D8B" />
+                <ImageView
+                    android:id="@+id/imageview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cal"
+                    android:scaleType="center" />
+            </LinearLayout>
+            <CalendarView
+                android:id="@+id/calendarview1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp" />
+            <TextView
+                android:id="@+id/textview15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Gender"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <LinearLayout
+                android:id="@+id/linear8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radiobutton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Male"
+                    android:textSize="14sp"
+                    android:textColor="#000000" />
+                <RadioButton
+                    android:id="@+id/radiobutton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Female"
+                    android:textSize="14sp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textview10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Phone Number "
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <EditText
+                android:id="@+id/edittext5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:maxLength="10"
+                android:textSize="14sp"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:hint="Enter Phone"
+                android:textColorHint="#607D8B" />
+            <TextView
+                android:id="@+id/textview9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Email"
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <EditText
+                android:id="@+id/edittext4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:hint="Enter Email Id"
+                android:textColorHint="#607D8B" />
+            <TextView
+                android:id="@+id/textview11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Password "
+                android:textSize="14sp"
+                android:textColor="#000000" />
+            <EditText
+                android:id="@+id/edittext8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:hint="Enter Password "
+                android:textColorHint="#607D8B"
+                android:inputType="textPassword" />
+            <LinearLayout
+                android:id="@+id/linear4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="#64B5F6"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="SUBMIT"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textview6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:padding="8dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Already have an account\?"
+                android:textSize="16sp"
+                android:textColor="#E53935" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

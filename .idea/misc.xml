@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/drawable/curve_shap.xml" value="0.1955" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/_drawer_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/aboutus.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/cart.xml" value="0.33" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/cart1_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/contactus.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/home_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/kennel.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/litter.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/mydogs.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/notification_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/profile0_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/profile1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy10.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy11.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy12.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy2.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy3.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy4.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy5.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy6.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy7.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy8.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/puppy9.xml" value="0.26807760141093473" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/registration.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/selectpuppies.xml" value="0.15625" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/singledog.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/layout/socialmedia.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/menu/navigation_bar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/INKC/app/src/main/res/menu/navigation_bar_manager.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

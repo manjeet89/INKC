@@ -1,10 +1,14 @@
 package com.example.inkc;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.View;
@@ -16,17 +20,36 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+
 public class Signup extends AppCompatActivity {
+
+    private RadioGroup radioGroup;
 
     private ScrollView vscroll2;
     private LinearLayout linear5;
@@ -54,6 +77,7 @@ public class Signup extends AppCompatActivity {
     private RadioButton radiobutton2;
     private Button button1;
     Calendar calendar;
+    static String male = "1";
    // private Calendar calendar = Calendar.getInstance();
 
     @Override
@@ -87,9 +111,50 @@ public class Signup extends AppCompatActivity {
         textview6 = findViewById(R.id.textview6);
         edittext9 = findViewById(R.id.edittext9);
         imageview1 = findViewById(R.id.imageview1);
-        radiobutton1 = findViewById(R.id.radiobutton1);
+        //radiobutton1 = findViewById(R.id.radiobutton1);
         radiobutton2 = findViewById(R.id.radiobutton2);
         button1 = findViewById(R.id.button1);
+
+        radioGroup = findViewById(R.id.radiogroupgender);
+        radiobutton1 = radioGroup.findViewById(R.id.radiobutton1);
+        radiobutton1.setChecked(true);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int selectid = radioGroup.getCheckedRadioButtonId();
+                if(selectid == -1)
+                {
+                    Toast.makeText(Signup.this, "No One Selected", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    RadioButton radioButton = radioGroup.findViewById(selectid);
+                   // Toast.makeText(Signup.this, radioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if(radioButton.getText().equals("Male"))
+                    {
+                        //Toast.makeText(Signup.this, "1", Toast.LENGTH_SHORT).show();
+                        male = "1";
+                    }
+                    else
+                    {
+                        //Toast.makeText(Signup.this, "0", Toast.LENGTH_SHORT).show();
+                        male = "0";
+                    }
+
+                }
+            }
+        });
+
+
+
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignUp();
+            }
+        });
 
 
         edittext9.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +237,133 @@ public class Signup extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
+    }
+
+    private void SignUp() {
+        String first = edittext2.getText().toString().trim();
+        String last = edittext3.getText().toString().trim();
+        String date = edittext9.getText().toString();
+        String gender = male;
+        String phone  = edittext5.getText().toString();
+        String email = edittext4.getText().toString().trim();
+        String password = edittext8.getText().toString().trim();
+
+
+        if(first.isEmpty()){
+            edittext2.requestFocus();
+            edittext2.setError("Please enter your first name");
+            return;
+        }
+        else if(last.isEmpty()){
+            edittext3.requestFocus();
+            edittext3.setError("Please enter your last name");
+            return;
+        }
+
+        else if(date.isEmpty()){
+            edittext9.requestFocus();
+            edittext9.setError("Please enter your date");
+            return;
+        }
+
+        else if(phone.isEmpty()){
+            edittext5.requestFocus();
+            edittext5.setError("Please enter your number");
+            return;
+        }
+        else if(email.isEmpty()){
+            edittext4.requestFocus();
+            edittext4.setError("Please enter your email");
+            return;
+        }
+        else  if(password.isEmpty()){
+            edittext8.requestFocus();
+            edittext8.setError("Please enter your password");
+            return;
+        }
+        else
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Please Wait!");
+            progressDialog.show();
+
+            StringRequest request = new StringRequest(Request.Method.POST, "https://mployis.com/inkc/api/login/signup",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            JSONObject jsonObject = null;
+                            try {
+                                jsonObject = new JSONObject(response);
+                                String message = jsonObject.getString("message");
+                                if(message.equals("Please verify user")){
+
+                                    String data = jsonObject.getString("data");
+                                    JSONObject jsonObject1 = new JSONObject(data);
+                                    String user_id = jsonObject1.getString("user_id");
+                                    String first_name = jsonObject1.getString("first_name");
+                                    String last_name = jsonObject1.getString("last_name");
+                                    String user_profile_image = jsonObject1.getString("user_profile_image");
+                                    String user_address = jsonObject1.getString("user_address");
+                                    String user_phone_number = jsonObject1.getString("user_phone_number");
+                                    String kennel_club_name = jsonObject1.getString("kennel_club_name");
+
+
+
+                                    Intent intent = new Intent(getApplicationContext(),Verficaion.class);
+                                    intent.putExtra("user_id",user_id);
+                                    intent.putExtra("first_name",first_name);
+                                    intent.putExtra("last_name",last_name);
+                                    intent.putExtra("user_profile_image",user_profile_image);
+                                    intent.putExtra("user_address",user_address);
+                                    intent.putExtra("user_phone_number",user_phone_number);
+                                    intent.putExtra("kennel_club_name",kennel_club_name);
+
+                                    startActivity(intent);
+                                    //startActivity(new Intent(getApplicationContext(),Verficaion.class));
+
+                                }else
+                                {
+                                    Toast.makeText(Signup.this, "Phone Number Is Must Be Unique", Toast.LENGTH_SHORT).show();
+                                    edittext5.requestFocus();
+                                    edittext5.setError("Phone Number Is Must Be Unique");
+                                    progressDialog.dismiss();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            })
+            {
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("user_password", password);
+                    params.put("first_name", first);
+                    params.put("user_phone_number", phone);
+                    params.put("last_name", last);
+                    params.put("user_birth_date", date);
+                    params.put("gender", gender);
+                    params.put("user_email_id",email );
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(Signup.this);
+            requestQueue.add(request);
+        }
+
+
+
+
     }
 
     private void initializeLogic() {

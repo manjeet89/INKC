@@ -32,6 +32,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static long back_pressed;
+    AppConfig appConfig;
 
     private Toolbar _toolbar;
     private AppBarLayout _app_bar;
@@ -70,12 +72,29 @@ public class MainActivity extends AppCompatActivity {
     private Intent contact = new Intent();
     private Intent social = new Intent();
 
+
+
+    @Override
+    public void onBackPressed(){
+        if (back_pressed + 2000 > System.currentTimeMillis()){
+            finishAffinity();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Press once again to exit",
+                    Toast.LENGTH_SHORT).show();
+            back_pressed = System.currentTimeMillis();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize(savedInstanceState);
         initializeLogic();
+
+
+
     }private void initialize(Bundle savedInstanceState) {
         _app_bar = findViewById(R.id._app_bar);
         _coordinator = findViewById(R.id._coordinator);
@@ -86,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         _toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _v) {
-                onBackPressed();
+               // onBackPressed();
             }
         });
         _drawer = findViewById(R.id._drawer);
@@ -174,6 +193,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        _drawer_textview5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appConfig = new AppConfig(MainActivity.this);
+                appConfig.updateUserLoginStatus(false);
+                startActivity(new Intent(MainActivity.this,Login.class));
+                finish();
+            }
+        });
     }
 
     private void initializeLogic() {
@@ -229,14 +258,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (_drawer.isDrawerOpen(GravityCompat.START)) {
-            _drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (_drawer.isDrawerOpen(GravityCompat.START)) {
+//            _drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
     public void _radius(final View _view, final double _radius, final double _shadow, final String _color) {
 
     }

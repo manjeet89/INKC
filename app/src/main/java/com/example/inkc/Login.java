@@ -2,6 +2,8 @@ package com.example.inkc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,10 +19,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.inkc.ResponseModel.ResponseModelLogin;
+
 import java.util.ArrayList;
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Login extends AppCompatActivity {
+
+
+    public boolean isRememberUserLogin = true;
+    private AppConfig appConfig;
+
+
 
     private LinearLayout linear1;
     private LinearLayout linear_login;
@@ -30,12 +44,12 @@ public class Login extends AppCompatActivity {
     private TextView textview2;
     private LinearLayout linear5;
     private LinearLayout linear6;
-    private Button button1;
+    private Button Login;
 //    private ProgressBar progressbar1;
     private TextView textview3;
     private Button button3;
-    private EditText edittext1;
-    private EditText edittext2;
+    private EditText number;
+    private EditText password;
 
     private Intent log = new Intent();
     private Intent frgt = new Intent();
@@ -57,18 +71,27 @@ public class Login extends AppCompatActivity {
         textview2 = findViewById(R.id.textview2);
         linear5 = findViewById(R.id.linear5);
         linear6 = findViewById(R.id.linear6);
-        button1 = findViewById(R.id.button1);
+        Login = findViewById(R.id.button1);
 //        progressbar1 = findViewById(R.id.progressbar1);
         textview3 = findViewById(R.id.textview3);
         button3 = findViewById(R.id.button3);
-        edittext1 = findViewById(R.id.edittext1);
-        edittext2 = findViewById(R.id.edittext2);
+        number = findViewById(R.id.edittext1);
+        password = findViewById(R.id.edittext2);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        appConfig = new AppConfig(this);
+        if(appConfig.isUserLogin())
+        {
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _view) {
 
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Login();
+//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
 
@@ -81,8 +104,10 @@ public class Login extends AppCompatActivity {
         });
     }
 
+
+
     private void initializeLogic() {
-        _view(button1, 50, 13, "#42AF5F");
+        _view(Login, 50, 13, "#42AF5F");
         _view(button3, 50, 13, "#42A5F5");
         _view(linear_login, 50, 13, "#FFFFFF");
     }
@@ -146,5 +171,80 @@ public class Login extends AppCompatActivity {
     @Deprecated
     public int getDisplayHeightPixels() {
         return getResources().getDisplayMetrics().heightPixels;
+    }
+
+    @SuppressLint("NotConstructor")
+    private void Login() {
+
+        String PhoneNumber = number.getText().toString();
+        String UserPassword = password.getText().toString();
+
+        if(PhoneNumber.isEmpty()){
+            number.requestFocus();
+            number.setError("Please enter your number");
+            return;
+        }
+        else if(UserPassword.isEmpty()){
+            password.requestFocus();
+            password.setError("Please enter your password");
+            return;
+        }
+        else
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Please Wait!");
+            progressDialog.show();
+
+            Call<ResponseModelLogin> call = RetrofitClient.getInstance().getApi().login(PhoneNumber,UserPassword);
+
+            call.enqueue(new Callback<ResponseModelLogin>() {
+                @Override
+                public void onResponse(Call<ResponseModelLogin> call, Response<ResponseModelLogin> response) {
+
+                    ResponseModelLogin responseModelLogin = response.body();
+                  //  Toast.makeText(Login.this, responseModelLogin.getMessage()+responseModelLogin.getData().first_name, Toast.LENGTH_SHORT).show();
+
+                    if(response.code()==200){
+                        if(responseModelLogin.getCode() == 200) {
+
+                            if (isRememberUserLogin) {
+                                appConfig.updateUserLoginStatus(true);
+                                appConfig.SaveImagesession(responseModelLogin.getData().user_profile_image);
+                                appConfig.SaveNamesession(responseModelLogin.getData().first_name +" "+responseModelLogin.getData().last_name);
+                                appConfig.SaveAddresssesion(responseModelLogin.getData().user_address);
+                                appConfig.SaveContactsession(responseModelLogin.getData().user_phone_number);
+                                appConfig.SaveInkcRegis(responseModelLogin.getData().user_id);
+                                appConfig.SaveMemberShip(responseModelLogin.getData().kennel_club_name);
+
+                            }
+//                            Toast.makeText(Login.this, "responseModelLogin.body().code", Toast.LENGTH_SHORT).show();
+
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        }
+                        else
+                        {
+                            Toast.makeText(Login.this, "UserName or PassWord is Wrong", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(Login.this, "Error In Server", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseModelLogin> call, Throwable t) {
+//                    Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Log.d("checkerror",t.getMessage());
+                    Toast.makeText(Login.this, "UserName or PassWord is Wrong", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+
+                }
+            });
+        }
+
+
+
     }
 }

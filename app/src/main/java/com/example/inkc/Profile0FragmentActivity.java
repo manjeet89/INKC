@@ -19,10 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+
 import de.hdodenhof.circleimageview.*;
 
 public class Profile0FragmentActivity extends Fragment {
-	
+
+	AppConfig appConfig;
+
+	private TextView name,address,contact,inckregis,membership;
+
 	private LinearLayout main_ui;
 	private ScrollView vscroll1;
 	private LinearLayout linear10;
@@ -52,6 +58,8 @@ public class Profile0FragmentActivity extends Fragment {
 	}
 	
 	private void initialize(Bundle _savedInstanceState, View _view) {
+		appConfig = new AppConfig(getContext());
+
 		main_ui = _view.findViewById(R.id.main_ui);
 		vscroll1 = _view.findViewById(R.id.vscroll1);
 		linear10 = _view.findViewById(R.id.linear10);
@@ -67,7 +75,31 @@ public class Profile0FragmentActivity extends Fragment {
 		button1 = _view.findViewById(R.id.button1);
 		button2 = _view.findViewById(R.id.button2);
 		textview8 = _view.findViewById(R.id.textview8);
-		
+
+		name = _view.findViewById(R.id.name);
+		address = _view.findViewById(R.id.address);
+		contact = _view.findViewById(R.id.contact);
+		inckregis = _view.findViewById(R.id.inkcregis);
+		membership = _view.findViewById(R.id.membership);
+
+
+		if(appConfig.getImagesession().equals("null")){
+
+		}else {
+			Glide.with(this).load("https://mployis.com/inkc/" + appConfig.getImagesession()).into(circleimageview1);
+		}
+		name.setText(appConfig.getNamesession());
+		if(appConfig.getAddresssesion().equals("null"))
+			address.setText(" ");
+		else
+			address.setText(appConfig.getAddresssesion());
+		contact.setText(appConfig.getContactsession());
+		inckregis.setText(appConfig.getInkcRegis());
+		if(appConfig.getMemberShip().equals("null"))
+			membership.setText("Not Member ");
+		else
+			membership.setText(appConfig.getMemberShip());
+
 		button1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View _view) {

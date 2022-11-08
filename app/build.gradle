@@ -47,4 +47,15 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
+
+    //Butter Knife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //Notification
+    implementation 'com.nex3z:notification-badge:1.0.4'
+
+    //EventBus
+    implementation "org.greenrobot:eventbus:3.3.1"
+
 }

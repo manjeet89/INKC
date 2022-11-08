@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -199,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 appConfig = new AppConfig(MainActivity.this);
                 appConfig.updateUserLoginStatus(false);
-                startActivity(new Intent(MainActivity.this,Login.class));
+                startActivity(new Intent(MainActivity.this, Login.class));
                 finish();
             }
         });

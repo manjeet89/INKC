@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,27 +32,28 @@ public class Login extends AppCompatActivity {
 
     public boolean isRememberUserLogin = true;
     private AppConfig appConfig;
+    TextView forgot;
 
 
 
-    private LinearLayout linear1;
-    private LinearLayout linear_login;
-    private LinearLayout linear_forget_pass;
-    private LinearLayout linear_register;
-    private ImageView imageview1;
-    private TextView textview2;
-    private LinearLayout linear5;
-    private LinearLayout linear6;
-    private Button Login;
-//    private ProgressBar progressbar1;
-    private TextView textview3;
-    private Button button3;
-    private EditText number;
-    private EditText password;
+    public LinearLayout linear1;
+    public LinearLayout linear_login;
+    public LinearLayout linear_forget_pass;
+    public LinearLayout linear_register;
+    public ImageView imageview1;
+    public TextView textview2;
+    public LinearLayout linear5;
+    public LinearLayout linear6;
+    public Button Login;
+//    public ProgressBar progressbar1;
+    public TextView textview3;
+    public Button button3;
+    public EditText number;
+    public EditText password;
 
-    private Intent log = new Intent();
-    private Intent frgt = new Intent();
-    private Intent reg = new Intent();
+    public Intent log = new Intent();
+    public Intent frgt = new Intent();
+    public Intent reg = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +61,10 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initialize(savedInstanceState);
         initializeLogic();
+
+
     }
-    private void initialize(Bundle savedInstanceState) {
+    public void initialize(Bundle savedInstanceState) {
         linear1 = findViewById(R.id.linear1);
         linear_login = findViewById(R.id.linear_login);
         linear_forget_pass = findViewById(R.id.linear_forget_pass);
@@ -77,7 +79,13 @@ public class Login extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
         number = findViewById(R.id.edittext1);
         password = findViewById(R.id.edittext2);
-
+        forgot = findViewById(R.id.forgot);
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ForgotPassword.class));
+            }
+        });
         appConfig = new AppConfig(this);
         if(appConfig.isUserLogin())
         {
@@ -99,14 +107,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View _view) {
 
-                startActivity(new Intent(getApplicationContext(),Signup.class));
+                startActivity(new Intent(getApplicationContext(), Signup.class));
             }
         });
     }
 
 
 
-    private void initializeLogic() {
+    public void initializeLogic() {
         _view(Login, 50, 13, "#42AF5F");
         _view(button3, 50, 13, "#42A5F5");
         _view(linear_login, 50, 13, "#FFFFFF");
@@ -174,7 +182,7 @@ public class Login extends AppCompatActivity {
     }
 
     @SuppressLint("NotConstructor")
-    private void Login() {
+    public void Login() {
 
         String PhoneNumber = number.getText().toString();
         String UserPassword = password.getText().toString();

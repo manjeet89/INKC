@@ -25,4 +25,13 @@ public interface Api {
             @Field("user_password") String user_password
 
     );
+
+    @FormUrlEncoded
+    @POST("login/forgotpassword")
+    Call<ResponseModelForgotPassword> forgot(
+            @Field("user_phone_number") String user_phone_number,
+            @Field("user_password") String user_password,
+            @Field("confirm_password") String confirm_password
+
+    );
 }

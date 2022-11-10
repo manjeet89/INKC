@@ -108,6 +108,7 @@
                 android:textColor="#42A5F5"/>
 
 
+
             <Button
                 android:id="@+id/button1"
                 android:layout_width="280dp"
@@ -115,7 +116,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:background="@drawable/curve_shap"
-                android:backgroundTint="#42A5F5"
+                android:backgroundTint="#91f288"
                 android:text="Login"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -148,7 +149,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:background="@drawable/curve_shap"
-                android:backgroundTint="#42A5F5"
+                android:backgroundTint="#91f288"
                 android:text="Register "
                 android:textSize="20sp"
                 android:textStyle="bold"

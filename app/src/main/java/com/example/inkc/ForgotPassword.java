@@ -76,7 +76,7 @@ public class ForgotPassword extends AppCompatActivity {
                 String cpass = edittext2.getText().toString().trim();
                 TextView error = findViewById(R.id.error);
                 if(pass.equals(cpass)){
-                    error.setText("Password Matched");
+                    error.setText("Password Matched");  // match password
                     error.setTextColor(Color.parseColor("#24d61e"));
 
                 }

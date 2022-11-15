@@ -85,7 +85,7 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         initialize(savedInstanceState);
-        initializeLogic();
+      //  initializeLogic();
 
     }
     private void initialize(Bundle savedInstanceState) {

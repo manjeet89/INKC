@@ -5,6 +5,8 @@
 	android:id="@+id/_coordinator"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
+
+<!--	not required-->
 	<com.google.android.material.appbar.AppBarLayout
 		android:id="@+id/_app_bar"
 		android:layout_width="match_parent"
